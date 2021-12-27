@@ -3,7 +3,7 @@
 My various attempts to create the simple code for this method.
 
 ### Assumptions
-User has provided the two strings with numbers only.
+User has provided the two strings with only numbers and therefor no validation.
 
 #### Attempt #2
 A more optimzed version, eliminating the additional 2 string variables 'large' and 'small' instead utilizing the 'output' variable to interchange the inputs to determine bigger number.
@@ -38,8 +38,8 @@ Basically getting string inputs from the user, the
   {
       string output = string.Empty;
 
-      int[] aa = a.pushIntoArray();
-      int[] bb = b.pushIntoArray();
+      int[] aa = pushIntoArray(a);
+      int[] bb = pushIntoArray(b);
 
       int[] large = a.Length > b.Length ? aa : bb;
       int[] small = a.Length <= b.Length ? aa : bb;
@@ -56,7 +56,9 @@ Basically getting string inputs from the user, the
   }
 
 
-  private static int[] pushIntoArray(this string value) {
+  // Method returns array of integers from the given string value.
+  // Eg: "1234" -> [1,2,3,4]
+  private static int[] pushIntoArray(string value) {
       int[] output = new int[value.Length];
       for(int i = 0; i<value.Length; i++)
           output[i] = int.Parse(value[i].ToString());
